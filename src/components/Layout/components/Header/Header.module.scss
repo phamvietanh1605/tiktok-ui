@@ -88,3 +88,17 @@
     color: rgba(22, 24, 35, 0.34);
     margin-right: 10px;
 }
+
+// Actions
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Menu
+.more-btn {
+    font-size: 2rem;
+    margin-left: 28px;
+    background-color: transparent;
+}
