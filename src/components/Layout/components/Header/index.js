@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
     faCircleXmark,
+    faCloudUpload,
     faEarthAsia,
     faEllipsisVertical,
     faKeyboard,
@@ -60,6 +61,8 @@ function Header() {
             title: 'Keyboard shortcuts',
         },
     ];
+    const currentUser = true;
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -93,16 +96,41 @@ function Header() {
                         </div>
                     </Tippy>
                 </div>
-                <div className={cx('actions')}>
-                    <Button text>Upload</Button>
-                    <Button primary size="large">
-                        Log in
-                    </Button>
 
+                <div className={cx('actions')}>
+                    {currentUser ? (
+                        <>
+                            <Tippy>
+                                <button className="action-btn">
+                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                </button>
+                                {/* <button className="action-btn">
+                                    <FontAwesomeIcon icon={faMessage} />
+                                </button> */}
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button text>Upload</Button>
+                            <Button primary size="large">
+                                Log in
+                            </Button>
+                        </>
+                    )}
                     <Menu items={MENU_ITEMS}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                        {currentUser ? (
+                            <>
+                                <img
+                                    src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/4b85df94ddbc913a995d4d721e417580.jpeg?x-expires=1705395600&x-signature=5Lwk2VSB90gNi46pyb9LT2vvsFk%3D"
+                                    className={cx('user-avatar')}
+                                    alt="Pham Viet Anh"
+                                />
+                            </>
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
